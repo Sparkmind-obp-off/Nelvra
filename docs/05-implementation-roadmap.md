@@ -1,127 +1,109 @@
-# Nelvra — Implementation Roadmap
+# Nelvra — Full Master Roadmap
 
-## PHASE 0 — Profit Discovery
+## Product
+**NELVRA — Distribution Profit System**
 
-Goal: understand the actual MJS money cycle before coding business assumptions.
+Core principle: **Dashboard is not the product. Action is the product.**
 
-Deliverables:
+Core business loop:
+BUY → PACK/PRODUCE → DISTRIBUTE → OUTLET → SELL-THROUGH → COLLECT → RESTOCK → REPEAT → PROFIT
 
-- product economics
-- production/packing yield model
-- outlet inventory model
-- collection model
-- route cost model
-- baseline metrics
-- validated workflows
+MJS Snack is the first design partner and operational pilot.
 
-## PHASE 1 — Distribution Core
+## Roadmap overview
 
-Build:
+| Phase | Name | Primary Outcome | Exit Gate |
+|---|---|---|---|
+| 0 | Foundation & Preflight | Canonical project foundation | Foundation Ready |
+| 1 | Master Vision | One locked product vision and boundary | Vision Locked |
+| 2 | Profit Discovery | Verified MJS economics and workflows | Discovery Validated |
+| 3 | System Architecture | Domain, ledger, calculations, permissions | Architecture Locked |
+| 4 | UX & Operational Design | Field-first workflows | UX Validated |
+| 5 | Distribution Core | End-to-end operational system | Core Operational |
+| 6 | Profit Intelligence | Economic visibility and risk detection | Intelligence Useful |
+| 7 | Action & Route Engine | Prioritized actions and route economics | Action Operational |
+| 8 | Production Hardening | Security, reliability, offline, audit, observability | Production Ready |
+| 9 | MJS Operational Pilot | Real-world measured validation | Pilot Validated |
+| 10 | Productization | Reusable product for other distributors | Product Ready |
 
-- authentication and roles
-- products
-- outlets
-- production batches
-- stock locations
-- inventory movements
-- field stock
-- visits
-- restock
-- returns
-- collections
+## PHASE 0 — FOUNDATION & PREFLIGHT
+Create one source of truth for brand, product, architecture, pilot, constraints, and definition of done.
+Scope: repository structure, documentation, brand status, product category, master blueprint, domain/data direction, MJS pilot definition, implementation contract, explicit non-goals.
+Exit gate: all core product decisions are documented and no unresolved contradiction blocks Phase 1.
 
-## PHASE 2 — Profit Engine
+## PHASE 1 — MASTER VISION
+Define exactly what Nelvra is, who it serves, the economic problem it owns, how it creates value, and what it must never become.
+Scope: product thesis, customer, money cycle, four product layers, core engines, product boundaries, north-star outcomes, UX principles, brand direction, feature decision filter.
+Deliverable: canonical Phase 1 Master Vision document.
+Exit gate: the product can be explained in one sentence, the business loop and MVP boundary are explicit, and later features can be tested against this vision.
 
-Build:
+## PHASE 2 — PROFIT DISCOVERY
+Replace assumptions with actual MJS data and validated operating behavior.
+Inputs: SKU list, bulk/bale cost, packaging cost, packing yield, selling price, retailer margin, outlets, geography, cadence, sent/sold/return quantities, collections, outstanding, route/fuel cost, production time, slow/dead stock evidence.
+Deliverables: verified business model, money-leak map, baseline metrics, validated workflows, initial thresholds, unresolved-data list.
+Exit gate: no critical product rule depends on an unverified assumption.
 
-- COGS
-- gross contribution
-- sell-through
-- outlet profitability
-- product profitability
-- slow/dead stock rules
-- outstanding aging
+## PHASE 3 — SYSTEM ARCHITECTURE
+Turn the validated business model into a deterministic and auditable system.
+Core domain: Tenant, User, Product, ProductionBatch, StockLocation, InventoryMovement, Outlet, OutletAllocation, Visit, Settlement, Collection, Route, Expense, Action, AuditEvent.
+Core rules: inventory ledger, field inventory, collection/receivable model, COGS, contribution, stock velocity, permissions, tenant boundaries, correction/reversal, audit.
+Exit gate: domain model, calculations, permissions and transaction rules are internally consistent and testable.
 
-## PHASE 3 — Route Intelligence
+## PHASE 4 — UX & OPERATIONAL DESIGN
+Design around real owner/operator behavior, especially field visits.
+Primary surfaces: Home, Outlet Visit, Owner Control Surface.
+Requirements: mobile-first, low cognitive load, touch-friendly, offline-first where required, clear sync status, short forms, observed versus estimated stock clearly differentiated.
+Exit gate: a real operator can complete common workflows quickly without documentation.
 
-Build:
+## PHASE 5 — DISTRIBUTION CORE
+Build the operational backbone.
+Modules: auth/roles, products/pricing, production/packing, stock locations/movements, field inventory, outlets/allocations, visits, restock, returns, settlements, collections, basic route planning.
+Definition of done: production → ready stock → vehicle → outlet → sell-through → collection → restock works end-to-end with persistent history and auditability.
+Exit gate: critical distribution path works with appropriate tests.
 
-- due outlet queue
-- economic priority
-- collection priority
-- restock priority
-- route cost capture
-- route contribution
-- area clustering
+## PHASE 6 — PROFIT INTELLIGENCE
+Expose where economic value is created, trapped, or lost.
+Engines: product economics, outlet economics, inventory intelligence, collection intelligence.
+Outputs: contribution, sell-through, velocity, aging, stockout risk, field inventory value, due/overdue, days-to-cash.
+Exit gate: owner can answer what sells, what makes money, where cash is stuck, where stock is stuck, and which outlets deserve attention.
 
-Avoid prematurely building a complex travelling-salesman/GPS optimizer.
+## PHASE 7 — ACTION & ROUTE ENGINE
+Turn insights into prioritized operational decisions.
+Actions: COLLECT, RESTOCK, STOP RESTOCK, VISIT, REVISIT, REACTIVATE, MOVE STOCK, PRODUCE, BUY.
+Route priority uses outstanding, stockout risk, sell-through, outlet contribution, restock need, area clustering and route cost.
+Do not build complex GPS/TSP optimization before route economics are proven.
+Exit gate: important signals produce clear next actions that the operator can execute.
 
-## PHASE 4 — Action Engine
+## PHASE 8 — PRODUCTION HARDENING
+Make Nelvra safe and reliable as real business software.
+Scope: authentication, authorization, least privilege, secrets, tenant isolation, idempotent writes, offline queue, retries, conflict handling, audit, backups, restore verification, monitoring, error tracking, performance, deployment and security/integrity testing.
+Exit gate: ordinary operational recovery does not require developer intervention.
 
-Build:
+## PHASE 9 — MJS OPERATIONAL PILOT
+Prove whether the product produces measurable business value in real MJS operations.
+Method: Baseline → Controlled Use → Compare → Refine.
+Metrics: sell-through, stockout frequency, slow/dead stock value, collection cycle, route contribution, outlet contribution, inventory turnover, visit time, reconciliation error rate.
+Rule: no guaranteed percentage improvement before baseline and pilot evidence exist.
+Exit gate: measurable value with acceptable operator workload and reliable transaction integrity.
 
-- next best action
-- stockout risk
-- slow-stock alerts
-- reorder/restock suggestions
-- outlet reactivation
-- visit-frequency recommendations
-- stock movement suggestions
+## PHASE 10 — PRODUCTIZATION
+Turn the validated MJS system into a reusable product.
+Scope: multi-tenant architecture, configurable rules, onboarding, tenant settings, reusable templates, deployment automation, billing/subscription model, support documentation, analytics and customer health.
+Principle: MJS-specific data becomes configuration; core business logic remains reusable.
+Exit gate: a second distributor can onboard without forking the core architecture.
 
-## PHASE 5 — Production Hardening
+## GLOBAL DEFINITION OF DONE
+Nelvra is not complete because screens render.
 
-Build and verify:
+Business rule → User action → Transaction → Persisted state → Derived metric → Operational decision
 
-- offline-first transaction queue where field usage requires it
-- reliable sync and conflict handling
-- audit trails
-- authorization
-- backups
-- monitoring
-- error recovery
-- performance
-- deployment
-- onboarding
+Critical paths must be understandable, testable, auditable, recoverable, and measurable.
 
-## PHASE 6 — MJS Operational Pilot
-
-Run the system against real MJS operations.
-
-Measure:
-
-- sell-through
-- stockouts
-- dead stock
-- collection cycle
-- route contribution
-- outlet contribution
-- inventory turnover
-- visit time
-- reconciliation accuracy
-
-## PHASE 7 — Productization
-
-After validation:
-
-- tenant isolation
-- configurable business rules
-- onboarding flow
-- deployment automation
-- subscription packaging
-- reusable templates
-- documentation
-- support process
-
-## Technical direction
-
-Preferred stack:
-
-- mobile-first PWA
-- Cloudflare Workers
-- PostgreSQL / Neon
-- role-based authentication
-- offline transaction queue
-- server-side calculation layer
-- immutable/auditable business ledger
-
-The architecture must keep business rules independent from the MJS-specific seed data.
+## MASTER PRODUCT FILTER
+Every core feature must plausibly improve at least one of:
+1. Revenue
+2. Cash conversion
+3. Cost or leakage
+4. Inventory efficiency
+5. Operational control
+If none apply, the feature does not enter the core product without an explicit product decision.
