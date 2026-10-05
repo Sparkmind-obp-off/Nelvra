@@ -42,18 +42,36 @@ The purchased domain is:
 
 **nelvra.biz.id**
 
-## Repository status
+## Master roadmap
 
-This repository starts from the product/documentation foundation. Implementation should follow the source-of-truth documents under `docs/`.
+The complete lifecycle is documented as Phase 0–10:
+
+- docs/phases/00-foundation-preflight.md
+- docs/phases/01-master-vision.md
+- docs/phases/02-profit-discovery.md
+- docs/phases/03-system-architecture.md
+- docs/phases/04-ux-operational-design.md
+- docs/phases/05-distribution-core.md
+- docs/phases/06-profit-intelligence.md
+- docs/phases/07-action-route-engine.md
+- docs/phases/08-production-hardening.md
+- docs/phases/09-mjs-operational-pilot.md
+- docs/phases/10-productization.md
 
 ## Source of truth
 
-- `docs/01-brand-platform.md` — brand and positioning
-- `docs/02-product-master-blueprint.md` — product definition and feature model
-- `docs/03-domain-and-data-model.md` — domain entities and business ledger
-- `docs/04-pilot-and-metrics.md` — MJS pilot and measurable outcomes
-- `docs/05-implementation-roadmap.md` — implementation phases
-- `docs/06-brand-lock-gate.md` — naming and clearance gate
+- docs/01-brand-platform.md — brand and positioning
+- docs/02-product-master-blueprint.md — product definition and feature model
+- docs/03-domain-and-data-model.md — domain entities and business ledger
+- docs/04-pilot-and-metrics.md — MJS pilot and measurable outcomes
+- docs/05-implementation-roadmap.md — full phase roadmap
+- docs/06-brand-lock-gate.md — naming and clearance gate
+- docs/07-brand-look.md — visual identity direction
+- docs/08-build-contract.md — implementation contract
+
+## Repository status
+
+The repository now contains the complete Phase 0–10 documentation package. Implementation should follow the phase exit gates rather than jumping directly into UI features.
 
 ## Product principle
 
